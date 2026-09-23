@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    // target
+    "target": "es2024",
+    "moduleDetection": "force",
+    // options
+    "sourceMap": false,
+    "declaration": true,
+    "declarationMap": true,
+    "skipLibCheck": true,
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    // strict
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "noUncheckedSideEffectImports": true,
+  }
+}
