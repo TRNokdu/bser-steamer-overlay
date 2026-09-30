@@ -8,8 +8,8 @@
     "declaration": true,
     "declarationMap": true,
     "skipLibCheck": true,
-    "verbatimModuleSyntax": true,
     "isolatedModules": true,
+    "removeComments": true,
     // strict
     "strict": true,
     "noUncheckedIndexedAccess": true,

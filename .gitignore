@@ -8,3 +8,6 @@ node_modules
 # env files
 **/.env*
 .env*
+
+# vscode workspace
+*.code-workspace
