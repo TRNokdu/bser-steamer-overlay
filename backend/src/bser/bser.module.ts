@@ -1,7 +1,8 @@
-import { Module } from '@nestjs/common';
-import { BserService } from './bser.service';
+import { Module } from '@nestjs/common'
+import { BserService } from './bser.service'
 
 @Module({
-  providers: [BserService]
+  providers: [BserService],
+  exports: [BserService],
 })
 export class BserModule {}

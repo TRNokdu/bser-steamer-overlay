@@ -1,7 +1,14 @@
-import typia, { tags } from 'typia'
-import { IEnv } from '../structures/IEnv'
+import { plainToInstance } from 'class-transformer'
+import { validateSync } from 'class-validator'
+import { envDto } from '../dto/Env.dto'
 
-// 2. 환경변수 파싱 및 검증 함수
-export function validateEnv(config: Record<string, unknown>): IEnv {
-  return type
+export function validateEnv(config: Record<string, unknown>): envDto {
+  const validateConfig = plainToInstance(envDto, config, {
+    enableImplicitConversion: true,
+  })
+  const errors = validateSync(validateConfig)
+  if (errors.length > 0) {
+    throw new Error(errors.toString())
+  }
+  return validateConfig
 }

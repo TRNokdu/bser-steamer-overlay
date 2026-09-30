@@ -7,7 +7,9 @@ node_modules
 
 # env files
 **/.env*
+!**/.env.example
 .env*
+!.env.example
 
 # vscode workspace
 *.code-workspace

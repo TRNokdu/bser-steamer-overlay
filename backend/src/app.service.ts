@@ -1,5 +1,6 @@
-import { Injectable } from '@nestjs/common'
+import { Inject, Injectable } from '@nestjs/common'
 import axios from 'axios'
+import { BserService } from './bser/bser.service'
 import { Res } from './common/dto/HttpResponse.dto'
 import HttpResponse from './common/response/HttpResponse'
 import { getTier } from './common/utils/tierHelper'
@@ -7,20 +8,17 @@ import { getData } from './dto/getData.dto'
 
 @Injectable()
 export class AppService {
+  constructor(@Inject(BserService) private readonly bserService: BserService) {}
+
   getHello(): string {
     return 'Hello World!'
   }
 
   async getData(): Promise<Res<getData>> {
-    await Promise.resolve()
-    const APIResponse = await axios.get(
-      'https://open-api.bser.io/v2/user/stats/uid/soEDXWozh7CA6QhH0dacY07TWAtzxNJmvRMAUfwx0_K64SRTGVI8tSY_2w/41/3',
-      {
-        headers: {
-          'x-api-key': '',
-        },
-      },
-    )
+    const APIResponse = (await this.bserService.getManual(
+      '/v2/user/stats/uid/soEDXWozh7CA6QhH0dacY07TWAtzxNJmvRMAUfwx0_K64SRTGVI8tSY_2w/41/3',
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    )) as any
     const stats = APIResponse.data.userStats[0]
 
     const RankData = getTier(stats.mmr, stats.rank)
